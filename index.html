@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام ERP متكامل - نسخة من النظام
+</title>
+ <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <!-- ==================== صفحة تسجيل الدخول ==================== -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-box">
+            <div class="login-logo">💎</div>
+            <h1 class="login-title">نظام ERP المتكامل</h1>
+            <p class="login-subtitle">لجميع المجالات التجارية</p>
+            
+            <input type="text" class="login-input" id="loginUser" placeholder="👤 اسم المستخدم" autocomplete="off">
+            <div class="pass-wrap">
+                <input type="password" class="login-input" id="loginPass" placeholder="🔒 كلمة المرور">
+                <button type="button" class="pass-toggle" onclick="togglePassword()" title="إظهار/إخفاء">👁️</button>
+            </div>
+            
+            <!-- تم إصلاح زر الدخول هنا -->
+            <button type="button" class="login-btn" id="loginButton">🚀 تسجيل الدخول</button>
+            
+            <div class="login-error" id="loginError">❌ اسم المستخدم أو كلمة المرور غير صحيحة</div>
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
+    <!-- ==================== الهيدر ==================== -->
+    <div class="header" id="mainHeader" style="display:none;">
+        <div class="header-left">
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <span class="header-title">💎 <span id="companyDisplay"></span></span>
+        </div>
+        <div class="header-right">
+            <div class="user-avatar" id="userInitial">م</div>
+            <span id="displayUser" style="font-weight:500;font-size:0.9vw;"></span>
+            <span class="role-badge" id="displayRole"></span>
+            <button class="btn btn-danger btn-sm no-print" onclick="logout()">🚪 خروج</button>
+        </div>
+    </div>
+
+    <!-- ==================== التخطيط الرئيسي ==================== -->
+    <div class="layout" id="mainLayout" style="display:none;">
+        <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+        
+        <!-- القائمة الجانبية -->
+        <div class="sidebar" id="sidebar">
+            <button class="sidebar-toggle no-print" onclick="toggleSidebar()" title="طي/توسيع">◀</button>
+            <div class="menu-item active" onclick="showPage('dashboard')"><span class="menu-icon">📊</span><span class="menu-text">لوحة التحكم</span></div>
+            <div class="menu-item" onclick="showPage('sales')"><span class="menu-icon">💰</span><span class="menu-text">المبيعات والفواتير</span></div>
+            <div class="menu-item" onclick="showPage('purchases')"><span class="menu-icon">📦</span><span class="menu-text">المشتريات</span></div>
+            <div class="menu-item" onclick="showPage('inventory')"><span class="menu-icon">🏗️</span><span class="menu-text">المخزون</span><span class="stock-alert-badge" id="lowStockBadge" style="display:none;">!</span></div>
+            <div class="menu-item" onclick="showPage('contacts')"><span class="menu-icon">👥</span><span class="menu-text">العملاء والموردين</span></div>
+            <div class="menu-item" onclick="showPage('cash')"><span class="menu-icon">💵</span><span class="menu-text">الخزينة والبنوك</span></div>
+            <div class="menu-item" onclick="showPage('employees')"><span class="menu-icon">👷</span><span class="menu-text">الموظفين والرواتب</span></div>
+            <div class="menu-item" onclick="showPage('assets')"><span class="menu-icon">🏭</span><span class="menu-text">الأصول الثابتة</span></div>
+            <div class="menu-item" onclick="showPage('reports')"><span class="menu-icon">📈</span><span class="menu-text">التقارير المالية</span></div>
+            <div class="menu-item" onclick="showPage('projects')"><span class="menu-icon">🎯</span><span class="menu-text">المشاريع</span></div>
+            <div class="menu-item" onclick="showPage('barcode')"><span class="menu-icon">📷</span><span class="menu-text">الباركود والماسح</span></div>
+            <div class="menu-item admin-only" onclick="showPage('users')"><span class="menu-icon">🔐</span><span class="menu-text">المستخدمين والصلاحيات</span></div>
+            <div class="menu-item admin-only" onclick="showPage('systemCopy')"><span class="menu-icon">💿</span><span class="menu-text">نسخة من النظام</span></div>
+            <div class="menu-item" onclick="showPage('settings')"><span class="menu-icon">⚙️</span><span class="menu-text">الإعدادات</span></div>
+        </div>
+
+        <!-- المحتوى الرئيسي -->
+        <div class="main-content" id="mainContent">
+            <!-- سيتم بناؤه بالجافاسكربت -->
+        </div>
+    </div>
+
+    <div class="print-page" id="printPage" style="display:none;"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
